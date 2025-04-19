@@ -214,27 +214,27 @@ func getValuesTableTemplates() string {
 	valuesSectionBuilder.WriteString("\n")
 	valuesSectionBuilder.WriteString("\n### {{ .SectionName }}\n")
 	valuesSectionBuilder.WriteString("\n")
-	valuesSectionBuilder.WriteString("| Key | Type | Default | Description |\n")
-	valuesSectionBuilder.WriteString("|-----|------|---------|-------------|\n")
+	valuesSectionBuilder.WriteString("| Key | Type | Description | Default |\n")
+	valuesSectionBuilder.WriteString("|-----|------|-------------|---------|\n")
 	valuesSectionBuilder.WriteString("  {{- range .SectionItems }}")
-	valuesSectionBuilder.WriteString("\n| {{ .Key }} | {{ .Type }} | {{ if .Default }}{{ .Default }}{{ else }}{{ .AutoDefault }}{{ end }} | {{ if .Description }}{{ .Description }}{{ else }}{{ .AutoDescription }}{{ end }} |")
+	valuesSectionBuilder.WriteString("\n| {{ .Key }} | {{ .Type }} | {{ if .Description }}{{ .Description }}{{ else }}{{ .AutoDescription }}{{ end }} | {{ if .Default }}{{ .Default }}{{ else }}{{ .AutoDefault }}{{ end }} |")
 	valuesSectionBuilder.WriteString("  {{- end }}")
 	valuesSectionBuilder.WriteString("{{- end }}")
 	valuesSectionBuilder.WriteString("{{ if .Sections.DefaultSection.SectionItems}}")
 	valuesSectionBuilder.WriteString("\n")
 	valuesSectionBuilder.WriteString("\n### {{ .Sections.DefaultSection.SectionName }}\n")
 	valuesSectionBuilder.WriteString("\n")
-	valuesSectionBuilder.WriteString("| Key | Type | Default | Description |\n")
-	valuesSectionBuilder.WriteString("|-----|------|---------|-------------|\n")
+	valuesSectionBuilder.WriteString("| Key | Type | Description | Default |\n")
+	valuesSectionBuilder.WriteString("|-----|------|-------------|---------|\n")
 	valuesSectionBuilder.WriteString("  {{- range .Sections.DefaultSection.SectionItems }}")
-	valuesSectionBuilder.WriteString("\n| {{ .Key }} | {{ .Type }} | {{ if .Default }}{{ .Default }}{{ else }}{{ .AutoDefault }}{{ end }} | {{ if .Description }}{{ .Description }}{{ else }}{{ .AutoDescription }}{{ end }} |")
+	valuesSectionBuilder.WriteString("\n| {{ .Key }} | {{ .Type }} | {{ if .Description }}{{ .Description }}{{ else }}{{ .AutoDescription }}{{ end }} | {{ if .Default }}{{ .Default }}{{ else }}{{ .AutoDefault }}{{ end }} |")
 	valuesSectionBuilder.WriteString("  {{- end }}")
 	valuesSectionBuilder.WriteString("{{ end }}")
 	valuesSectionBuilder.WriteString("{{ else }}")
-	valuesSectionBuilder.WriteString("| Key | Type | Default | Description |\n")
-	valuesSectionBuilder.WriteString("|-----|------|---------|-------------|\n")
+	valuesSectionBuilder.WriteString("| Key | Type | Description | Default |\n")
+	valuesSectionBuilder.WriteString("|-----|------|-------------|---------|\n")
 	valuesSectionBuilder.WriteString("  {{- range .Values }}")
-	valuesSectionBuilder.WriteString("\n| {{ .Key }} | {{ .Type }} | {{ if .Default }}{{ .Default }}{{ else }}{{ .AutoDefault }}{{ end }} | {{ if .Description }}{{ .Description }}{{ else }}{{ .AutoDescription }}{{ end }} |")
+	valuesSectionBuilder.WriteString("\n| {{ .Key }} | {{ .Type }} | {{ if .Description }}{{ .Description }}{{ else }}{{ .AutoDescription }}{{ end }} | {{ if .Default }}{{ .Default }}{{ else }}{{ .AutoDefault }}{{ end }} |")
 	valuesSectionBuilder.WriteString("  {{- end }}")
 	valuesSectionBuilder.WriteString("{{ end }}")
 	valuesSectionBuilder.WriteString("{{ end }}")
@@ -274,16 +274,16 @@ func getValuesTableTemplates() string {
 	<thead>
 		<th>Key</th>
 		<th>Type</th>
-		<th>Default</th>
 		<th>Description</th>
+		<th>Default</th>
 	</thead>
 	<tbody>
 	{{- range .SectionItems }}
 		<tr>
 			<td>{{ .Key }}</td>
 			<td>{{ .Type }}</td>
-			<td>{{ template "chart.valueDefaultColumnRender" . }}</td>
 			<td>{{ if .Description }}{{ .Description }}{{ else }}{{ .AutoDescription }}{{ end }}</td>
+			<td>{{ template "chart.valueDefaultColumnRender" . }}</td>
 		</tr>
 	{{- end }}
 	</tbody>
@@ -295,16 +295,16 @@ func getValuesTableTemplates() string {
 	<thead>
 		<th>Key</th>
 		<th>Type</th>
-		<th>Default</th>
 		<th>Description</th>
+		<th>Default</th>
 	</thead>
 	<tbody>
 	{{- range .Sections.DefaultSection.SectionItems }}
 	<tr>
 		<td>{{ .Key }}</td>
 		<td>{{ .Type }}</td>
-		<td>{{ template "chart.valueDefaultColumnRender" . }}</td>
 		<td>{{ if .Description }}{{ .Description }}{{ else }}{{ .AutoDescription }}{{ end }}</td>
+		<td>{{ template "chart.valueDefaultColumnRender" . }}</td>
 	</tr>
 	{{- end }}
 	</tbody>
@@ -315,16 +315,16 @@ func getValuesTableTemplates() string {
 	<thead>
 		<th>Key</th>
 		<th>Type</th>
-		<th>Default</th>
 		<th>Description</th>
+		<th>Default</th>
 	</thead>
 	<tbody>
 	{{- range .Values }}
 		<tr>
 			<td>{{ .Key }}</td>
 			<td>{{ .Type }}</td>
-			<td>{{ template "chart.valueDefaultColumnRender" . }}</td>
 			<td>{{ if .Description }}{{ .Description }}{{ else }}{{ .AutoDescription }}{{ end }}</td>
+			<td>{{ template "chart.valueDefaultColumnRender" . }}</td>
 		</tr>
 	{{- end }}
 	</tbody>
