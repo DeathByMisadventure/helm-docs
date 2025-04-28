@@ -1,4 +1,4 @@
-# Build the application from source
+# Build the application from source in a build container
 FROM golang:latest AS build-stage
 
 WORKDIR /app
